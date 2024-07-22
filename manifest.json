@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Prodigy Game Loader",
+    "version": "1.0",
+    "permissions": [
+        "declarativeNetRequest",
+        "activeTab",
+        "scripting"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+        "https://math.prodigygame.com/*",
+        "https://raw.githubusercontent.com/*"
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "ruleset_1",
+                "enabled": true,
+                "path": "rules.json"
+            }
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://math.prodigygame.com/?launcher=true&code=*"],
+            "js": ["content.js"]
+        }
+    ]
+}
